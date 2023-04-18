@@ -1,8 +1,7 @@
 
 import util.UtilClass;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,24 +22,25 @@ public class Main {
 
         System.out.println("Choose how many quantities you want:");
 
-        UtilClass.row();
+        System.out.println(UtilClass.row());
 
         int level = sc.nextInt();
 
-        int kick [];
+        int kick[];
+
 
         switch (level) {
 
             case 1:
-                 kick = new int[10];
+                kick = new int[10];
                 break;
 
             case 2:
-                 kick = new int[5];
+                kick = new int[5];
                 break;
 
             case 3:
-                 kick  = new int[3];
+                kick = new int[3];
                 break;
 
             default:
@@ -48,11 +48,17 @@ public class Main {
                 System.out.println("option does not exist you only have one try!");
         }
 
+        int kickDone[] = new int[kick.length];
+
         for (int i = 0; i < kick.length; i++) {
 
             System.out.println("Attempt : " + (i + 1) + " in " + (kick.length));
             System.out.println("What your kick?");
+
             kick[i] = sc.nextInt();
+
+            kickDone[i] = kick[i];
+
 
             if (kick[i] == numberSecret) {
                 System.out.println("Congrats won the match!!");
@@ -70,6 +76,13 @@ public class Main {
         }
         System.out.println("Quantity for kicks :" + Arrays.stream(kick).count());
 
+        System.out.println(Arrays.toString(kick));
+        System.out.println(Arrays.toString(kickDone));
+
     }
 
+
 }
+
+
+
