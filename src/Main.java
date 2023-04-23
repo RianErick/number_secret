@@ -6,6 +6,8 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
+        boolean winner = false;
+
         int numberSecret;
 
         Scanner sc = new Scanner(System.in);
@@ -59,9 +61,9 @@ public class Main {
 
             kickDone[i] = kick[i];
 
-
             if (kick[i] == numberSecret) {
                 System.out.println("Congrats won the match!!");
+                winner = true;
                 break;
             } else if (kick[i] < numberSecret) {
                 System.out.println("Kick < Number Secret ");
@@ -74,10 +76,17 @@ public class Main {
             }
 
         }
-        System.out.println("Quantity for kicks :" + Arrays.stream(kick).count());
 
-        System.out.println(Arrays.toString(kick));
-        System.out.println(Arrays.toString(kickDone));
+        if (winner == true)
+            System.out.println(":D");
+        else {
+            System.out.println("Faild :(");
+            System.out.println("Number Secret : " + numberSecret);
+        }
+
+        System.out.println("Quantity for kicks :" + Arrays.stream(kick).count());
+        System.out.println("Kicks : " + Arrays.toString(kick));
+
 
     }
 
