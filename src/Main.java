@@ -22,71 +22,80 @@ public class Main {
             numberSecret = new Random().nextInt(nQuantity);
         }
 
-        System.out.println("Choose how many quantities you want:");
+        var res = 0;
 
-        System.out.println(UtilClass.row());
+        do {
 
-        int level = sc.nextInt();
+            System.out.println("Choose how many quantities you want:");
 
-        int kick[];
+            System.out.println(UtilClass.row());
+
+            int level = sc.nextInt();
+
+            int kick[];
 
 
-        switch (level) {
+            switch (level) {
 
-            case 1:
-                kick = new int[10];
-                break;
+                case 1:
+                    kick = new int[10];
+                    break;
 
-            case 2:
-                kick = new int[5];
-                break;
+                case 2:
+                    kick = new int[5];
+                    break;
 
-            case 3:
-                kick = new int[3];
-                break;
+                case 3:
+                    kick = new int[3];
+                    break;
 
-            default:
-                kick = new int[1];
-                System.out.println("option does not exist you only have one try!");
-        }
-
-        int kickDone[] = new int[kick.length];
-
-        for (int i = 0; i < kick.length; i++) {
-
-            System.out.println("Attempt : " + (i + 1) + " in " + (kick.length));
-            System.out.println("What your kick?");
-
-            kick[i] = sc.nextInt();
-
-            kickDone[i] = kick[i];
-
-            if (kick[i] == numberSecret) {
-                System.out.println("Congrats won the match!!");
-                winner = true;
-                break;
-            } else if (kick[i] < numberSecret) {
-                System.out.println("Kick < Number Secret ");
-
-            } else if (kick[i] > numberSecret) {
-                System.out.println("Kick < Number Secret ");
-
-            } else if (kick[i] < 0) {
-                System.out.println("Kick < 0 ");
+                default:
+                    kick = new int[1];
+                    System.out.println("option does not exist you only have one try!");
             }
 
-        }
+            int kickDone[] = new int[kick.length];
 
-        if (winner == true)
-            System.out.println(":D");
-        else {
-            System.out.println("Faild :(");
-            System.out.println("Number Secret : " + numberSecret);
-        }
+            for (int i = 0; i < kick.length; i++) {
 
-        System.out.println("Quantity for kicks :" + Arrays.stream(kick).count());
-        System.out.println("Kicks : " + Arrays.toString(kick));
+                System.out.println("Attempt : " + (i + 1) + " in " + (kick.length));
+                System.out.println("What your kick?");
 
+                kick[i] = sc.nextInt();
+
+                kickDone[i] = kick[i];
+
+                if (kick[i] == numberSecret) {
+                    System.out.println("Congrats won the match!!");
+                    winner = true;
+                    break;
+                } else if (kick[i] < numberSecret) {
+                    System.out.println("Kick < Number Secret ");
+
+                } else if (kick[i] > numberSecret) {
+                    System.out.println("Kick > Number Secret ");
+
+                } else if (kick[i] < 0) {
+                    System.out.println("Kick < 0 ");
+
+                }
+
+            }
+
+            if (winner == true)
+                System.out.println(":D");
+            else {
+                System.out.println("Faild :(");
+                System.out.println("Number Secret : " + numberSecret);
+            }
+
+            System.out.println("Quantity for kicks :" + Arrays.stream(kick).count());
+            System.out.println("Kicks : " + Arrays.toString(kick));
+
+            System.out.println(UtilClass.rowTwo());
+            res = sc.nextInt();
+
+        } while (res != 2);
 
     }
 
